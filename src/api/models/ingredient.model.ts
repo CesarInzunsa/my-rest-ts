@@ -1,4 +1,4 @@
-import mongoose from 'moongose'
+import mongoose from 'mongoose'
 
 // Desestructuramos Schema y model desde mongoose
 const { Schema, model } = mongoose
