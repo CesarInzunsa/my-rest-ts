@@ -3,9 +3,9 @@ import productController from '../controllers/product.controller'
 const router = Router()
 
 router.get('/:idProduct', async (req, res) => {
-    const { idProduct } = req.params
-    const result = await productController.getOneById(idProduct)
-    res.status(result.status).json(result)
+  const { idProduct } = req.params
+  const result = await productController.getOneById(idProduct)
+  res.status(result.status).json(result)
 })
 
 export default router

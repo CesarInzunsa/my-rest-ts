@@ -3,14 +3,14 @@ import config from '../../config/config'
 import productRouter from './product.routes'
 
 const RouterAPI = (app: any): Router => {
-    const router = Router()
-    const api = config.API_PREFIX
+  const router = Router()
+  const api = config.API_PREFIX
 
-    app.use(api, router)
+  app.use(api, router)
 
-    router.use('/pwa/diaries', productRouter)
+  router.use('/pwa/diaries', productRouter)
 
-    return router
+  return router
 }
 
 export default RouterAPI
