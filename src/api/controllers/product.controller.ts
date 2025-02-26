@@ -6,14 +6,15 @@ import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 // projection to excluding the _id field
 const projection = { _id: 0 }
 
-async function getOneById (idProduct: String): Promise<ProductResponse> {
+async function getOneById (idProduct: string): Promise<ProductResponse> {
   try {
     const product = await productModel.findOne({ id: idProduct }, projection, null).populate('ingredients.ingredient', projection)
     if (product === null) {
       return { status: StatusCodes.NOT_FOUND, message: ReasonPhrases.NOT_FOUND }
     }
     return { status: StatusCodes.OK, data: product }
-  } catch {
+  } catch(e) {
+    console.error(e)
     return { status: StatusCodes.INTERNAL_SERVER_ERROR, message: ReasonPhrases.INTERNAL_SERVER_ERROR }
   }
 }
