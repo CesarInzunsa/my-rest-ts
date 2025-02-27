@@ -1,4 +1,5 @@
 import productRoutes from "./src/api/routes/index.routes";
+import httpLogger from './src/middlewares/httpLogger';
 import logger from './src/middlewares/logger';
 import config from './src/config/config'
 import express from 'express'
@@ -8,15 +9,10 @@ const app = express()
 
 // Middlewares
 app.use(express.json())
+app.use(httpLogger)
 
 // Set configs
 app.set('port', config.PORT)
-
-// Use logger in express
-app.use((req, _res, next) => {
-  logger.info(`${req.method} ${req.url}`);
-  next()
-})
 
 // Routes
 productRoutes(app)
