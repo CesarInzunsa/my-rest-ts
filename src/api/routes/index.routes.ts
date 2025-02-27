@@ -8,7 +8,7 @@ const RouterAPI = (app: Application): Router => {
 
   app.use(api, router)
 
-  router.use('/pwa/diaries', productRouter)
+  router.use('/products', productRouter)
 
   return router
 }
