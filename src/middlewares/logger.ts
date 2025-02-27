@@ -20,15 +20,19 @@ const mongoTransport = new MongoDB({
     level: 'warn', // Only save warning and above to MongoDB
     decolorize: true,
     tryReconnect: true,
+    format: winston.format.combine(
+        winston.format.timestamp({format: 'YYYY-MM-DD HH:mm:ss'}),
+        winston.format.metadata({ fillExcept: ['message', 'level', 'timestamp', 'label'] })
+    )
+})
+
+mongoTransport.on('connected', () => {
+    console.log('Connected to MongoDB for logging');
 })
 
 const logger = winston.createLogger({
     level: 'info',
     transports: [consoleTransport, mongoTransport]
-})
-
-mongoTransport.on('connected', () => {
-    logger.info('Connected to MongoDB for logging');
 })
 
 export default logger
