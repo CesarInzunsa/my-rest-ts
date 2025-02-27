@@ -7,27 +7,27 @@ import { Product } from '../../types'
 const projection = { _id: 0 }
 
 async function getOneById(idProduct: string): Promise<Product | null> {
-  const product = await productModel.findOne({ id: idProduct }, projection).populate('ingredients.ingredient', projection)
-  if (product === null) {
-    logger.warn(`Product with id: ${idProduct} not found`);
-    return null
-  }
+    const product = await productModel.findOne({ id: idProduct }, projection).populate('ingredients.ingredient', projection)
+    if (product === null) {
+        logger.warn(`Product with id: ${idProduct} not found`);
+        return null
+    }
 
-  return product.toObject()
+    return product.toObject()
 }
 
 async function getAll(): Promise<Product[] | null> {
-  const products = await productModel.find({}, projection).populate('ingredients.ingredient', projection)
-  if (products.length === 0) {
-    logger.warn('No products found');
-    return null
-  }
+    const products = await productModel.find({}, projection).populate('ingredients.ingredient', projection)
+    if (products.length === 0) {
+        logger.warn('No products found');
+        return null
+    }
 
-  return products.map(product => product.toObject())
+    return products.map(product => product.toObject())
 }
 
 
 export default {
-  getOneById,
-  getAll
+    getOneById,
+    getAll
 }

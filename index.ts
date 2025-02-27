@@ -18,12 +18,12 @@ app.set('port', config.PORT)
 productRoutes(app)
 
 app.listen(app.get('port'), () => {
-  const serverInfo = {
-    name: 'My RESTFUL API Server',
-    host: config.HOST,
-    port: app.get('port'),
-    apiPrefix: config.API_PREFIX
-  }
-  const message = `${serverInfo.name} is running on ${serverInfo.host}:${serverInfo.port}${serverInfo.apiPrefix}`
-  logger.info(message)
+    const serverInfo = {
+        name: 'My RESTFUL API Server',
+        host: config.HOST,
+        port: app.get('port'),
+        apiPrefix: config.API_PREFIX
+    }
+    const message = `${serverInfo.name} is running on ${serverInfo.host}:${serverInfo.port}${serverInfo.apiPrefix}`
+    logger.info(message)
 })
